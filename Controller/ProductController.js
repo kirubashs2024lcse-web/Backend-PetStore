@@ -2,8 +2,7 @@ const Product = require("../Models/ProductModel");
 
 const addProduct = async (req, res) => {
     try {
-        const { name, price, category, description } = req.body;
-        const image = req.file ? `/uploads/${req.file.filename}` : "";
+        const { name, price, category, description, image } = req.body;
         const product = await Product.create({ name, price: parseFloat(price), category, description, image });
         res.status(201).json(product);
     } catch (error) {

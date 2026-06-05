@@ -6,6 +6,6 @@ const upload = require("../Utils/upload");
 
 router.get("/", getProducts);
 router.get("/:id", getProductById);
-router.post("/", protect, adminOnly, upload.single("image"), addProduct);
+router.post("/", protect, adminOnly, addProduct);
 
 module.exports = router;
