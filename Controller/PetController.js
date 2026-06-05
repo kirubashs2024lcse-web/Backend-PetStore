@@ -2,8 +2,7 @@ const Pet = require("../Models/PetModel");
 
 const submitPet = async (req, res) => {
     try {
-        const { petName, species, breed, age, description, ownerName, email, phone } = req.body;
-        const image = req.file ? `/uploads/${req.file.filename}` : "";
+        const { petName, species, breed, age, description, ownerName, email, phone, image } = req.body;
         const pet = await Pet.create({ petName, species, breed, age, description, ownerName, email, phone, image });
         res.status(201).json({ message: "Pet submitted for review", data: pet });
     } catch (error) {

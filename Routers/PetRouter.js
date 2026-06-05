@@ -5,7 +5,7 @@ const { protect, adminOnly } = require("../Utils/authMiddleware");
 const upload = require("../Utils/upload");
 
 router.get("/approved", getApprovedPets);
-router.post("/submit", protect, upload.single("image"), submitPet);
+router.post("/submit", protect, submitPet);
 router.get("/submissions", protect, adminOnly, getSubmissions);
 router.put("/approve/:id", protect, adminOnly, approvePet);
 router.put("/reject/:id", protect, adminOnly, rejectPet);
