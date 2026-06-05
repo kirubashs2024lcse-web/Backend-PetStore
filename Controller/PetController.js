@@ -48,4 +48,14 @@ const rejectPet = async (req, res) => {
     }
 };
 
-module.exports = { submitPet, getSubmissions, getApprovedPets, approvePet, rejectPet };
+const deletePet = async (req, res) => {
+    try {
+        const pet = await Pet.findByIdAndDelete(req.params.id);
+        if (!pet) return res.status(404).json({ message: "Pet not found" });
+        res.status(200).json({ message: "Pet deleted" });
+    } catch (error) {
+        res.status(500).json({ message: "Error deleting pet", error: error.message });
+    }
+};
+
+module.exports = { submitPet, getSubmissions, getApprovedPets, approvePet, rejectPet, deletePet };

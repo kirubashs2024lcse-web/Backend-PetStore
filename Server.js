@@ -15,10 +15,12 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 const userRoutes = require("./Routers/UserRouter");
 const petRoutes = require("./Routers/PetRouter");
 const productRoutes = require("./Routers/ProductRouter");
+const orderRoutes = require("./Routers/OrderRouter");
 
 app.use("/api/user", userRoutes);
 app.use("/api/pets", petRoutes);
 app.use("/api/products", productRoutes);
+app.use("/api/orders", orderRoutes);
 
 mongoose.connect(process.env.MONGO_URL)
     .then(() => console.log("Connection to MongoDB Successful"))
